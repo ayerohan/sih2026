@@ -1,6 +1,10 @@
 package com.sihbackend.service;
 
 import com.sihbackend.entity.ScheduleActivity;
+import com.sihbackend.dto.ActivityMatchResponse;
+import com.sihbackend.entity.ActivityMatch;
+import com.sihbackend.exception.ResourceNotFoundException;
+import com.sihbackend.repository.ActivityMatchRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -13,6 +17,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class ActivityMatchingService {
+	private final ActivityMatchRepository matchRepository;
+	public ActivityMatchingService(ActivityMatchRepository matchRepository) { this.matchRepository = matchRepository; }
+	public List<ActivityMatchResponse> findByReport(Long reportId) { return matchRepository.findByExtractedEventProgressReportId(reportId).stream().map(this::toResponse).toList(); }
+	public ActivityMatchResponse findById(Long id) { return toResponse(get(id)); }
+	public ActivityMatch get(Long id) { return matchRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Activity match", id)); }
+	private ActivityMatchResponse toResponse(ActivityMatch m) { return new ActivityMatchResponse(m.getId(), m.getScheduleActivity().getId(), m.getScheduleActivity().getActivityCode(), m.getScheduleActivity().getActivityName(), m.getMatchScore(), m.getStatus()); }
+
 	public List<ActivityMatchResult> findMatches(ExtractedEventData event, List<ScheduleActivity> activities) {
 		Set<String> reportWords = words(event.activityDescription());
 		return activities.stream()

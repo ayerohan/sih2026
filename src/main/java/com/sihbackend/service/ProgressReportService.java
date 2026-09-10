@@ -24,6 +24,7 @@ public class ProgressReportService {
 	private final ActivityMatchingService matchingService;
 	private final ProgressUpdateService progressUpdateService;
 	private final AuditService auditService;
+	private final com.sihbackend.repository.UserRepository userRepository;
 	private final double confidenceThreshold;
 
 	public ProgressReportService(ProgressReportRepository reportRepository, ProjectRepository projectRepository,
@@ -31,12 +32,14 @@ public class ProgressReportService {
 								 ReviewRepository reviewRepository, ScheduleActivityRepository activityRepository,
 								 ExtractionService extractionService, ActivityMatchingService matchingService,
 								 ProgressUpdateService progressUpdateService, AuditService auditService,
+								 com.sihbackend.repository.UserRepository userRepository,
 								 @Value("${app.matching.confidence-threshold:0.75}") double confidenceThreshold) {
 		this.reportRepository = reportRepository; this.projectRepository = projectRepository;
 		this.eventRepository = eventRepository; this.matchRepository = matchRepository;
 		this.reviewRepository = reviewRepository; this.activityRepository = activityRepository;
 		this.extractionService = extractionService; this.matchingService = matchingService;
 		this.progressUpdateService = progressUpdateService; this.auditService = auditService;
+		this.userRepository = userRepository;
 		this.confidenceThreshold = confidenceThreshold;
 	}
 
@@ -47,7 +50,7 @@ public class ProgressReportService {
 		ProgressReport report = new ProgressReport(); report.setProject(project);
 		report.setTitle(request.getTitle()); report.setRawText(request.getRawText());
 		report.setReportDate(request.getReportDate()); report.setReportType(request.getReportType());
-		report.setSubmittedBy(request.getSubmittedBy()); report.setSourceDocumentId(request.getSourceDocumentId());
+		report.setSubmittedBy(request.getSubmittedBy() == null ? null : userRepository.getReferenceById(request.getSubmittedBy())); report.setSourceDocumentId(request.getSourceDocumentId());
 		return toSummary(reportRepository.save(report));
 	}
 
@@ -93,7 +96,7 @@ public class ProgressReportService {
 			match.setScheduleActivity(candidate.activity()); match.setMatchScore(candidate.score());
 			match.setMatchingMethod(candidate.method());
 			match.setStatus(candidate == candidates.get(0) && candidate.score().doubleValue() >= confidenceThreshold
-					? MatchStatus.AUTO_LINKED : MatchStatus.PENDING_REVIEW);
+					? MatchStatus.AUTO_LINKED : MatchStatus.PENDING);
 			return matchRepository.save(match);
 		}).toList();
 

@@ -19,7 +19,7 @@ public class AuditLog {
 	@Column(nullable = false) private String action;
 	@JdbcTypeCode(SqlTypes.JSON) @Column(columnDefinition = "jsonb") private String oldValue;
 	@JdbcTypeCode(SqlTypes.JSON) @Column(columnDefinition = "jsonb") private String newValue;
-	private Long performedBy;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "performed_by_id") private User performedBy;
 	@Column(nullable = false) private OffsetDateTime performedAt;
 	private String reason;
 	@PrePersist void onCreate() { performedAt = OffsetDateTime.now(); }

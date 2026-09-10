@@ -16,7 +16,7 @@ public class Schedule {
 	@Column(nullable = false) private String name;
 	private String sourceType;
 	private Integer version;
-	private Long uploadedBy;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "uploaded_by_id") private User uploadedBy;
 	private OffsetDateTime uploadedAt;
 	private String status;
 }

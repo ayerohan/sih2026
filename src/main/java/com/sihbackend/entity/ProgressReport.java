@@ -15,7 +15,7 @@ import java.time.OffsetDateTime;
 public class ProgressReport {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false) @JoinColumn(name = "project_id") private Project project;
-	private Long submittedBy;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "submitted_by_id") private User submittedBy;
 	private String reportType;
 	private String title;
 	@Lob @Column(nullable = false) private String rawText;

@@ -10,4 +10,5 @@ public interface ScheduleActivityRepository extends JpaRepository<ScheduleActivi
 	List<ScheduleActivity> findByScheduleProjectIdAndLevelIn(Long projectId, Collection<ActivityLevel> levels);
 	List<ScheduleActivity> findByScheduleId(Long scheduleId);
 	List<ScheduleActivity> findByParentActivityId(Long activityId);
+	List<ScheduleActivity> findByScheduleProjectId(Long projectId);
 }

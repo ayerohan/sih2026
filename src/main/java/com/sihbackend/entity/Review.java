@@ -12,7 +12,7 @@ import java.time.OffsetDateTime;
 public class Review {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 	@ManyToOne(fetch = FetchType.LAZY, optional = false) @JoinColumn(name = "activity_match_id") private ActivityMatch activityMatch;
-	private Long reviewerId;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "reviewer_id") private User reviewer;
 	@Column(nullable = false) private String decision;
 	private String comment;
 	@Column(nullable = false) private OffsetDateTime reviewedAt;

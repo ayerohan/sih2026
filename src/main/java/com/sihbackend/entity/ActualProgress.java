@@ -20,7 +20,7 @@ public class ActualProgress {
 	private LocalDate actualFinish;
 	private BigDecimal progressPercentage;
 	@Enumerated(EnumType.STRING) private ActivityStatus status;
-	private Long updatedBy;
+	@ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "updated_by_id") private User updatedBy;
 	@Column(nullable = false) private OffsetDateTime updatedAt;
 	@PrePersist @PreUpdate void onUpdate() { updatedAt = OffsetDateTime.now(); }
 }

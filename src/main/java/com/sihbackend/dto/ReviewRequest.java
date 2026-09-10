@@ -1,4 +1,6 @@
 package com.sihbackend.dto;
 
-public class ReviewRequest {
+import jakarta.validation.constraints.NotBlank;
+
+public record ReviewRequest(@NotBlank String decision, String comment, Long reviewerId) {
 }

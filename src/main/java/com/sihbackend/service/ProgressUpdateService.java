@@ -3,6 +3,7 @@ package com.sihbackend.service;
 import com.sihbackend.entity.ActualProgress;
 import com.sihbackend.entity.ExtractedEvent;
 import com.sihbackend.entity.ScheduleActivity;
+import com.sihbackend.entity.User;
 import com.sihbackend.repository.ActualProgressRepository;
 import com.sihbackend.enums.ActivityStatus;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class ProgressUpdateService {
 
 	public ProgressUpdateService(ActualProgressRepository actualProgressRepository) { this.actualProgressRepository = actualProgressRepository; }
 
-	public ActualProgress apply(ExtractedEvent event, ScheduleActivity activity, Long updatedBy) {
+	public ActualProgress apply(ExtractedEvent event, ScheduleActivity activity, User updatedBy) {
 		ActualProgress progress = new ActualProgress();
 		progress.setScheduleActivity(activity); progress.setExtractedEvent(event);
 		progress.setActualStart(event.getEventDate());
