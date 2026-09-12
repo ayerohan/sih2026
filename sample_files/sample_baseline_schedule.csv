@@ -1,0 +1,11 @@
+ActivityCode,ActivityName,WBSLevel,Discipline,Location,PlannedStart,PlannedFinish,PlannedProgress,Unit,PlannedQuantity
+CIV-1001,Site Excavation and Earthwork Phase 1,L3,Civil,Zone-A,2024-02-01,2024-02-20,100,cum,1500.0
+CIV-1002,PCC and Raft Foundation Concrete Pouring,L3,Civil,Zone-A,2024-02-21,2024-03-25,65,cum,850.0
+CIV-1003,RCC Column Shuttering and Concreting,L3,Civil,Zone-B,2024-03-10,2024-04-15,30,cum,420.0
+CIV-1004,Slab Beam Reinforcement Steel Laying,L3,Civil,Zone-B,2024-04-16,2024-05-20,0,MT,65.0
+PIP-2001,Underground Stormwater Piping Installation,L3,Piping,External,2024-03-01,2024-03-30,45,rmt,320.0
+PIP-2002,HDPE Water Supply Pipeline Laying and Hydrotest,L3,Piping,External,2024-03-15,2024-04-10,15,rmt,180.0
+ELE-3001,Electrical Cable Tray and Conduit Installation,L3,Electrical,Basement,2024-03-05,2024-04-05,20,rmt,550.0
+ELE-3002,Main Substation Switchgear and Transformer Erection,L3,Electrical,Substation,2024-04-10,2024-05-15,0,nos,4.0
+BRK-4001,External AAC Block Masonry and Plastering,L3,Civil,Level-1,2024-03-01,2024-04-20,50,sqm,950.0
+STE-5001,Structural Steel Roof Truss Fabrication and Erection,L3,Structural,Roof,2024-03-12,2024-04-25,40,MT,38.0

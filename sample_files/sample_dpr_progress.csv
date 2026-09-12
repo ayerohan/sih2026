@@ -1,0 +1,6 @@
+Date,Site,Contractor,TypeOfWork,SkilledLabour,UnskilledLabour,WorkDescription,Quantity,QuantityNumeric,Unit
+2024-03-18,Urban Metro Station,L&T Construction,Civil,18,32,RCC Column concrete pouring grid C1-C8,45.5,45.5,cum
+2024-03-18,Urban Metro Station,Shapoorji Pallonji,Piping,12,16,Stormwater underground pipe laying Section-2,30.0,30.0,rmt
+2024-03-18,Urban Metro Station,Voltas MEP,Electrical,14,10,Cable tray installation basement level,60.0,60.0,rmt
+2024-03-18,Urban Metro Station,Tata Projects,Civil,10,24,AAC block masonry work at east corridor,85.0,85.0,sqm
+2024-03-18,Urban Metro Station,Bridge & Roof,Structural,8,14,Structural steel truss welding and alignment,6.2,6.2,MT
