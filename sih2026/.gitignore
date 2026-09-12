@@ -1,0 +1,7 @@
+.neon
+.env.local
+node_modules/
+
+*.log
+
+sihbackend.worktrees/
