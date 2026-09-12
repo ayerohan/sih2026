@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project xmlns="http://schemas.microsoft.com/project">
+    <Name>Urban Metro Station Construction Project</Name>
+    <Title>PRJ-METRO</Title>
+    <StartDate>2024-02-01T08:00:00</StartDate>
+    <FinishDate>2024-12-31T17:00:00</FinishDate>
+    <Tasks>
+        <Task>
+            <UID>1</UID>
+            <ID>1</ID>
+            <Name>Metro Station Development</Name>
+            <Type>1</Type>
+            <OutlineLevel>1</OutlineLevel>
+            <OutlineNumber>1</OutlineNumber>
+            <WBS>1</WBS>
+            <Summary>1</Summary>
+        </Task>
+        <Task>
+            <UID>2</UID>
+            <ID>2</ID>
+            <Name>Civil &amp; Structural Works</Name>
+            <OutlineLevel>2</OutlineLevel>
+            <OutlineNumber>1.1</OutlineNumber>
+            <WBS>1.1</WBS>
+            <Summary>1</Summary>
+        </Task>
+        <Task>
+            <UID>3</UID>
+            <ID>3</ID>
+            <Name>Site Excavation and Earthwork Phase 1</Name>
+            <Active>1</Active>
+            <Manual>0</Manual>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.1.1</OutlineNumber>
+            <WBS>CIV-1001</WBS>
+            <Start>2024-02-01T08:00:00</Start>
+            <Finish>2024-02-20T17:00:00</Finish>
+            <Duration>PT160H0M0S</Duration>
+            <PercentComplete>100</PercentComplete>
+            <PercentWorkComplete>100</PercentWorkComplete>
+        </Task>
+        <Task>
+            <UID>4</UID>
+            <ID>4</ID>
+            <Name>PCC and Raft Foundation Concrete Pouring</Name>
+            <Active>1</Active>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.1.2</OutlineNumber>
+            <WBS>CIV-1002</WBS>
+            <Start>2024-02-21T08:00:00</Start>
+            <Finish>2024-03-25T17:00:00</Finish>
+            <Duration>PT240H0M0S</Duration>
+            <PercentComplete>65</PercentComplete>
+        </Task>
+        <Task>
+            <UID>5</UID>
+            <ID>5</ID>
+            <Name>RCC Column Shuttering and Concreting</Name>
+            <Active>1</Active>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.1.3</OutlineNumber>
+            <WBS>CIV-1003</WBS>
+            <Start>2024-03-10T08:00:00</Start>
+            <Finish>2024-04-15T17:00:00</Finish>
+            <Duration>PT288H0M0S</Duration>
+            <PercentComplete>30</PercentComplete>
+        </Task>
+        <Task>
+            <UID>6</UID>
+            <ID>6</ID>
+            <Name>MEP &amp; Utilities</Name>
+            <OutlineLevel>2</OutlineLevel>
+            <OutlineNumber>1.2</OutlineNumber>
+            <WBS>1.2</WBS>
+            <Summary>1</Summary>
+        </Task>
+        <Task>
+            <UID>7</UID>
+            <ID>7</ID>
+            <Name>Underground Stormwater Piping Installation</Name>
+            <Active>1</Active>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.2.1</OutlineNumber>
+            <WBS>PIP-2001</WBS>
+            <Start>2024-03-01T08:00:00</Start>
+            <Finish>2024-03-30T17:00:00</Finish>
+            <Duration>PT240H0M0S</Duration>
+            <PercentComplete>45</PercentComplete>
+        </Task>
+        <Task>
+            <UID>8</UID>
+            <ID>8</ID>
+            <Name>HDPE Water Supply Pipeline Laying and Hydrotest</Name>
+            <Active>1</Active>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.2.2</OutlineNumber>
+            <WBS>PIP-2002</WBS>
+            <Start>2024-03-15T08:00:00</Start>
+            <Finish>2024-04-10T17:00:00</Finish>
+            <Duration>PT208H0M0S</Duration>
+            <PercentComplete>15</PercentComplete>
+        </Task>
+        <Task>
+            <UID>9</UID>
+            <ID>9</ID>
+            <Name>Electrical Cable Tray and Conduit Installation</Name>
+            <Active>1</Active>
+            <OutlineLevel>3</OutlineLevel>
+            <OutlineNumber>1.2.3</OutlineNumber>
+            <WBS>ELE-3001</WBS>
+            <Start>2024-03-05T08:00:00</Start>
+            <Finish>2024-04-05T17:00:00</Finish>
+            <Duration>PT248H0M0S</Duration>
+            <PercentComplete>20</PercentComplete>
+        </Task>
+    </Tasks>
+</Project>

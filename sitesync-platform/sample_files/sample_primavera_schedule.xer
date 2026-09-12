@@ -1,0 +1,33 @@
+ERMHDR	21.12	2024-01-15	X	PROJECT	Admin	en_US
+%T	PROJECT
+%F	proj_id	proj_short_name	proj_long_name	plan_start_date	plan_end_date	def_complete_pct_type
+%R	1001	PRJ-METRO	Urban Metro Station Construction Project	2024-02-01 08:00	2024-12-31 17:00	CP_Phys
+%T	PROJWBS
+%F	wbs_id	proj_id	obs_id	seq_num	est_wt	wbs_short_name	wbs_name	parent_wbs_id
+%R	1	1001	1	1	1.0	PRJ-METRO	Metro Station Development	
+%R	2	1001	1	2	1.0	WBS-CIV	Civil & Structural Works	1
+%R	3	1001	1	3	1.0	WBS-FOUND	Substructure & Foundation	2
+%R	4	1001	1	4	1.0	WBS-SUPER	Superstructure & Columns	2
+%R	5	1001	1	5	1.0	WBS-MEP	MEP & Utilities	1
+%R	6	1001	1	6	1.0	WBS-PIPE	Piping & Drainage Networks	5
+%R	7	1001	1	7	1.0	WBS-ELEC	Electrical & Instrumentation	5
+%T	TASK
+%F	task_id	proj_id	wbs_id	clndr_id	phys_complete_pct	task_type	status_code	task_code	task_name	actv_code_discipline	target_start_date	target_end_date	early_start_date	early_end_date	total_float
+%R	101	1001	3	1	100	TT_Task	TK_Complete	CIV-1001	Site Excavation and Earthwork Phase 1	Civil	2024-02-01 08:00	2024-02-20 17:00	2024-02-01 08:00	2024-02-20 17:00	0
+%R	102	1001	3	1	65	TT_Task	TK_Active	CIV-1002	PCC and Raft Foundation Concrete Pouring	Civil	2024-02-21 08:00	2024-03-25 17:00	2024-02-21 08:00	2024-03-25 17:00	0
+%R	103	1001	4	1	30	TT_Task	TK_Active	CIV-1003	RCC Column Shuttering and Concreting	Civil	2024-03-10 08:00	2024-04-15 17:00	2024-03-10 08:00	2024-04-15 17:00	5
+%R	104	1001	4	1	0	TT_Task	TK_NotStart	CIV-1004	Slab Beam Reinforcement Steel Laying	Civil	2024-04-16 08:00	2024-05-20 17:00	2024-04-16 08:00	2024-05-20 17:00	5
+%R	105	1001	6	1	45	TT_Task	TK_Active	PIP-2001	Underground Stormwater Piping Installation	Piping	2024-03-01 08:00	2024-03-30 17:00	2024-03-01 08:00	2024-03-30 17:00	10
+%R	106	1001	6	1	15	TT_Task	TK_Active	PIP-2002	HDPE Water Supply Pipeline Laying and Hydrotest	Piping	2024-03-15 08:00	2024-04-10 17:00	2024-03-15 08:00	2024-04-10 17:00	10
+%R	107	1001	7	1	20	TT_Task	TK_Active	ELE-3001	Electrical Cable Tray and Conduit Installation	Electrical	2024-03-05 08:00	2024-04-05 17:00	2024-03-05 08:00	2024-04-05 17:00	15
+%R	108	1001	7	1	0	TT_Task	TK_NotStart	ELE-3002	Main Substation Switchgear and Transformer Erection	Electrical	2024-04-10 08:00	2024-05-15 17:00	2024-04-10 08:00	2024-05-15 17:00	15
+%R	109	1001	2	1	50	TT_Task	TK_Active	BRK-4001	External AAC Block Masonry and Plastering	Civil	2024-03-01 08:00	2024-04-20 17:00	2024-03-01 08:00	2024-04-20 17:00	8
+%R	110	1001	4	1	40	TT_Task	TK_Active	STE-5001	Structural Steel Roof Truss Fabrication and Erection	Structural	2024-03-12 08:00	2024-04-25 17:00	2024-03-12 08:00	2024-04-25 17:00	6
+%T	TASKPRED
+%F	task_pred_id	task_id	pred_task_id	pred_type
+%R	1	102	101	PR_FS
+%R	2	103	102	PR_SS
+%R	3	104	103	PR_FS
+%R	4	106	105	PR_SS
+%R	5	108	107	PR_FS
+%E
