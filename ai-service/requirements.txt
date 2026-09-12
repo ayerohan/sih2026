@@ -7,3 +7,5 @@ sentence-transformers
 scikit-learn
 rapidfuzz
 numpy
+python-multipart
+pdfplumber

@@ -5,6 +5,7 @@ import { useProject } from '../../context/ProjectContext';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { RollUpModal } from '../common/RollUpModal';
+import { IntelligenceChatDrawer } from '../ai/IntelligenceChatDrawer';
 import {
   ClipboardList,
   CheckSquare,
@@ -237,6 +238,9 @@ export const WorkerLayout: React.FC = () => {
           <span>Profile</span>
         </NavLink>
       </div>
+
+      {/* Global AI Intelligence Chat Drawer — visible on all worker pages */}
+      <IntelligenceChatDrawer />
     </div>
   );
 };

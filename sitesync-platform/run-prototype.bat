@@ -7,15 +7,15 @@ echo.
 
 cd /d "%~dp0"
 
-echo [1/3] Checking and starting AI Service & Multi-Format Engine (Port 8000)...
+echo [1/2] Starting AI Service & Multi-Format Engine (Port 8000)...
 cd sih2026\ai-service
-start "SiteSync AI Service" cmd /k "pip install -r requirements.txt && uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+start "SiteSync AI Service" cmd /k "python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
 
-timeout /t 3 /nobreak >nul
+timeout /t 2 /nobreak >nul
 
-echo [2/3] Installing/Starting SiteSync Frontend (Port 5173)...
+echo [2/2] Starting SiteSync Frontend (Port 5173)...
 cd /d "%~dp0oil-industries"
-start "SiteSync Frontend UI" cmd /k "npm install && npm run dev"
+start "SiteSync Frontend UI" cmd /k "npm run dev"
 
 echo.
 echo ======================================================================

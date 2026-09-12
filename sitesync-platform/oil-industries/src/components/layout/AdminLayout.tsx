@@ -5,23 +5,17 @@ import { useProject } from '../../context/ProjectContext';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { RollUpModal } from '../common/RollUpModal';
+import { IntelligenceChatDrawer } from '../ai/IntelligenceChatDrawer';
 import {
   LayoutDashboard,
   CalendarDays,
   TrendingUp,
   FileText,
   AlertTriangle,
-  Layers,
-  Cpu,
-  History,
-  Users,
-  UserCheck,
   Settings,
-  FolderGit2,
-  Lock,
   ChevronLeft,
   ChevronRight,
-  BrainCircuit,
+  FolderKanban,
 } from 'lucide-react';
 
 export const AdminLayout: React.FC = () => {
@@ -46,8 +40,9 @@ export const AdminLayout: React.FC = () => {
     {
       group: t('nav.group.controlCenter', 'CONTROL CENTER'),
       items: [
+        { name: t('nav.projects', 'Projects'), path: '/admin/projects', icon: FolderKanban },
         { name: t('nav.overview', 'Project Overview'), path: '/admin/dashboard', icon: LayoutDashboard },
-        { name: t('nav.schedule', 'Schedule (WBS)'), path: `/admin/projects/${selectedProjectId}/schedule`, icon: CalendarDays },
+        { name: t('nav.schedule', 'Schedule & Review'), path: `/admin/projects/${selectedProjectId}/schedule`, icon: CalendarDays },
         { name: t('nav.progress', 'Progress & S-Curve'), path: `/admin/projects/${selectedProjectId}/progress`, icon: TrendingUp },
       ],
     },
@@ -62,22 +57,17 @@ export const AdminLayout: React.FC = () => {
           badge: pendingReviewCount > 0 ? pendingReviewCount : undefined,
           badgeAlert: true,
         },
-        { name: t('nav.hierarchy', 'L5 / L6 Hierarchy'), path: `/admin/projects/${selectedProjectId}`, icon: Layers },
       ],
     },
     {
-      group: t('nav.group.intelligence', 'INTELLIGENCE & ADMIN'),
+      group: t('nav.group.system', 'SYSTEM'),
       items: [
-        { name: t('nav.analytics', 'AI Monitoring & Stats'), path: '/admin/analytics', icon: Cpu },
-        { name: t('nav.audit', 'Audit Trail'), path: '/admin/audit', icon: History },
-        { name: t('nav.supervisors', 'Field Supervisors'), path: '/admin/workers', icon: Users },
-        { name: t('nav.projects', 'All Projects'), path: '/admin/projects', icon: FolderGit2 },
-        { name: t('nav.intelligence', 'Intelligence Chat'), path: '/admin/intelligence', icon: BrainCircuit },
-        { name: t('nav.profile', 'Admin Profile'), path: '/admin/profile', icon: UserCheck },
         { name: t('nav.settings', 'Settings'), path: '/admin/settings', icon: Settings },
       ],
     },
   ];
+
+
 
   return (
     <div className="h-screen bg-offwhite-100 dark:bg-[#0f1215] flex flex-col text-graphite-900 dark:text-graphite-100 overflow-hidden">
@@ -122,8 +112,11 @@ export const AdminLayout: React.FC = () => {
                     {group.items.map((item, iIdx) => {
                       const Icon = item.icon;
                       const isActive =
-                        location.pathname === item.path ||
-                        (item.path.includes('/schedule') && location.pathname.includes('/schedule'));
+                        (item.path === '/admin/projects' && location.pathname === '/admin/projects') ||
+                        (item.path !== '/admin/projects' && (
+                          location.pathname === item.path ||
+                          (item.path.includes('/schedule') && location.pathname.includes('/schedule'))
+                        ));
 
                       return (
                         <NavLink
@@ -219,6 +212,18 @@ export const AdminLayout: React.FC = () => {
       {/* Mobile Bottom Navigation Bar for Admin */}
       <div className="md:hidden bg-graphite-900 border-t border-graphite-800 text-white flex items-center justify-around py-2 sticky bottom-0 z-40">
         <NavLink
+          to="/admin/projects"
+          end
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 text-[10px] font-mono p-1 ${
+              isActive ? 'text-amber-brand font-bold' : 'text-graphite-400'
+            }`
+          }
+        >
+          <FolderKanban className="w-4 h-4" />
+          <span>Projects</span>
+        </NavLink>
+        <NavLink
           to="/admin/dashboard"
           className={({ isActive }) =>
             `flex flex-col items-center gap-1 text-[10px] font-mono p-1 ${
@@ -241,6 +246,28 @@ export const AdminLayout: React.FC = () => {
           <span>Schedule</span>
         </NavLink>
         <NavLink
+          to={`/admin/projects/${selectedProjectId}/progress`}
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 text-[10px] font-mono p-1 ${
+              isActive ? 'text-amber-brand font-bold' : 'text-graphite-400'
+            }`
+          }
+        >
+          <TrendingUp className="w-4 h-4" />
+          <span>Progress</span>
+        </NavLink>
+        <NavLink
+          to={`/admin/projects/${selectedProjectId}/reports`}
+          className={({ isActive }) =>
+            `flex flex-col items-center gap-1 text-[10px] font-mono p-1 ${
+              isActive ? 'text-amber-brand font-bold' : 'text-graphite-400'
+            }`
+          }
+        >
+          <FileText className="w-4 h-4" />
+          <span>Reports</span>
+        </NavLink>
+        <NavLink
           to="/admin/review"
           className={({ isActive }) =>
             `flex flex-col items-center gap-1 text-[10px] font-mono p-1 relative ${
@@ -254,18 +281,11 @@ export const AdminLayout: React.FC = () => {
             <span className="absolute top-0 right-1 w-2 h-2 bg-amber-brand rounded-full animate-pulse" />
           )}
         </NavLink>
-        <NavLink
-          to="/admin/profile"
-          className={({ isActive }) =>
-            `flex flex-col items-center gap-1 text-[10px] font-mono p-1 ${
-              isActive ? 'text-amber-brand font-bold' : 'text-graphite-400'
-            }`
-          }
-        >
-          <UserCheck className="w-4 h-4" />
-          <span>Profile</span>
-        </NavLink>
       </div>
+
+      {/* Global AI Intelligence Chat Drawer — visible on all pages */}
+      <IntelligenceChatDrawer />
     </div>
   );
 };
+

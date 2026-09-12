@@ -282,10 +282,10 @@ export const AdminDashboard: React.FC = () => {
               </h3>
             </div>
             <Link
-              to="/admin/audit"
+              to={`/admin/projects/${selectedProjectId}/reports`}
               className="text-sm text-amber-brand hover:text-amber-600 font-bold transition-colors"
             >
-              {language === 'hi' ? 'पूर्ण लॉग →' : 'Full Log →'}
+              {language === 'hi' ? 'फील्ड रिपोर्ट →' : 'Field Reports →'}
             </Link>
           </div>
 

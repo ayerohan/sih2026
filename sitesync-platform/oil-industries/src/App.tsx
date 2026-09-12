@@ -24,7 +24,6 @@ import { ReportsPage } from './pages/admin/ReportsPage';
 import { ReviewQueuePage } from './pages/admin/ReviewQueuePage';
 import { WorkersPage } from './pages/admin/WorkersPage';
 import { AnalyticsPage } from './pages/admin/AnalyticsPage';
-import { AuditTrailPage } from './pages/admin/AuditTrailPage';
 import { SettingsPage } from './pages/admin/SettingsPage';
 
 // Worker Pages
@@ -88,10 +87,9 @@ export function App() {
                 <Route path="projects/:projectId/schedule" element={<SchedulePage />} />
                 <Route path="projects/:projectId/progress" element={<ProgressPage />} />
                 <Route path="projects/:projectId/reports" element={<ReportsPage />} />
-                <Route path="review" element={<ReviewQueuePage />} />
+                <Route path="review" element={<SchedulePage initialTab="REVIEW" />} />
                 <Route path="workers" element={<WorkersPage />} />
                 <Route path="analytics" element={<AnalyticsPage />} />
-                <Route path="audit" element={<AuditTrailPage />} />
                 <Route path="settings" element={<SettingsPage />} />
                 <Route path="intelligence" element={<IntelligenceChatPage />} />
               </Route>
